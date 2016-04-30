@@ -67,6 +67,40 @@ end
 * `_path()` creates Hash that has a key of path
   * `_path("/etc/passwd-s3fs") { content "..." }` => `{"/etc/passwd-s3fs": {"content": "..."}}`
 
+### String#fn_join()
+
+Ruby templates will be converted as follows by `String#fn_join()`:
+
+```ruby
+UserData do
+  Fn__Base64 (<<-EOS).fn_join
+    #!/bin/bash
+    /opt/aws/bin/cfn-init -s <%= Ref "AWS::StackName" %> -r myEC2Instance --region <%= Ref "AWS::Region" %>
+  EOS
+end
+```
+
+```javascript
+"UserData": {
+  "Fn::Base64": {
+    "Fn::Join": [
+      "",
+      [
+        "#!/bin/bash\n",
+        "/opt/aws/bin/cfn-init -s ",
+        {
+          "Ref": "AWS::StackName"
+        },
+        " -r myEC2Instance --region ",
+        {
+          "Ref": "AWS::Region"
+        },
+        "\n"
+      ]
+    ]
+  }
+}
+```
 
 ### Split a template file
 
