@@ -67,7 +67,7 @@ class Kumogata2::Plugin::Ruby
     dsl = Dslh.deval(template,
       key_conv: key_conv,
       value_conv: value_conv,
-      exclude_key: exclude_key
+      exclude_key: exclude_key,
       ignore_methods: IGNORE_METHODS)
 
     dsl.gsub!(/^/, '  ').strip!
