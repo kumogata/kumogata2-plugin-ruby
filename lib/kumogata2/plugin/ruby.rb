@@ -9,8 +9,6 @@ require 'kumogata2/plugin/ruby/context'
 class Kumogata2::Plugin::Ruby
   Kumogata2::Plugin.register(:ruby, ['rb'], self)
 
-  IGNORE_METHODS = [:system]
-
   def initialize(options)
     @options = options
   end
@@ -67,8 +65,7 @@ class Kumogata2::Plugin::Ruby
     dsl = Dslh.deval(template,
       key_conv: key_conv,
       value_conv: value_conv,
-      exclude_key: exclude_key,
-      ignore_methods: IGNORE_METHODS)
+      exclude_key: exclude_key)
 
     dsl.gsub!(/^/, '  ').strip!
 

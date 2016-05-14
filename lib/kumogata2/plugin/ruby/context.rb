@@ -1,4 +1,6 @@
 class Kumogata2::Plugin::Ruby::Context
+  IGNORE_METHODS = [:system]
+
   def initialize(options)
     @options = options
   end
@@ -19,13 +21,14 @@ class Kumogata2::Plugin::Ruby::Context
       end
     end
 
-    @_template = Dslh.eval(nil, {
-      :key_conv   => key_converter,
-      :value_conv => value_converter,
-      :scope_hook => proc {|scope|
+    @_template = Dslh.eval({
+      key_conv: key_converter,
+      value_conv: value_converter,
+      scope_hook: proc {|scope|
         define_template_func(scope, @options.path_or_url)
       },
-      :filename   => @options.path_or_url,
+      filename: @options.path_or_url,
+      ignore_methods: IGNORE_METHODS,
     }, &block)
   end
 
