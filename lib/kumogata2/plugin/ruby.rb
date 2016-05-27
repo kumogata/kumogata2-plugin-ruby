@@ -62,16 +62,26 @@ class Kumogata2::Plugin::Ruby
       end
     end
 
-    dsl = Dslh.deval(template,
+    dslh_opts = {
       key_conv: key_conv,
       value_conv: value_conv,
-      exclude_key: exclude_key)
+      exclude_key: exclude_key,
+      initial_depth: 1,
+    }
 
-    dsl.gsub!(/^/, '  ').strip!
+    if ENV['EXPORT_RUBY_USE_BRACES'] == '1'
+      dslh_opts[:use_braces_instead_of_do_end] = true
+    end
+
+    if ENV['EXPORT_RUBY_OLD_FORMAT'] == '1'
+      dslh_opts[:dump_old_hash_array_format] = true
+    end
+
+    dsl = Dslh.deval(template, dslh_opts)
 
     <<-EOS
 template do
-  #{dsl}
+  #{dsl.strip}
 end
     EOS
   end

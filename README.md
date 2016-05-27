@@ -20,6 +20,26 @@ Or install it yourself as:
 
     $ gem install kumogata2-plugin-ruby
 
+## Usage
+
+```sh
+kumogata2 export my-stack --output-format rb > my-stack.rb
+kumogata2 dry-run my-stack.rb my-stack
+kumogata2 update my-stack.rb my-stack
+```
+
+### Export using braces
+
+```sh
+EXPORT_RUBY_USE_BRACES=1 kumogata2 export ... --output-format rb
+```
+
+### Export old format
+
+```sh
+EXPORT_RUBY_OLD_FORMAT=1 kumogata2 export ... --output-format rb
+```
+
 ## Example
 
 ```ruby
