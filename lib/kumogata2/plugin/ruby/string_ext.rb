@@ -129,4 +129,4 @@ module Kumogata2::Plugin::Ruby::StringExt
   end
 end
 
-String.include(Kumogata2::Plugin::Ruby::StringExt)
+String.send(:include, Kumogata2::Plugin::Ruby::StringExt)
