@@ -103,6 +103,19 @@ module Kumogata2::Plugin::Ruby::StringExt
         #{null.inspect}
       end
 
+      def Fn__ImportValue(value)
+        value = {'Fn::ImportValue' => value}
+
+        case @__functions__
+        when Array
+          @__functions__ << value
+        when Hash
+          @__functions__.update(value)
+        end
+
+        #{null.inspect}
+      end
+
       def Fn__Select(value)
         value = {'Fn::Select' => @__value_conv__[value]}
 
