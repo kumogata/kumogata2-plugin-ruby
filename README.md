@@ -4,6 +4,8 @@ It is the Ruby plug-in of [Kumogata2](https://github.com/winebarrel/kumogata2).
 
 It convert the Ruby DSL to JSON.
 
+[![Gem Version](https://badge.fury.io/rb/kumogata2-plugin-ruby.png?201406152020)](http://badge.fury.io/rb/kumogata2-plugin-ruby)
+
 ## Installation
 
 Add this line to your application's Gemfile:
