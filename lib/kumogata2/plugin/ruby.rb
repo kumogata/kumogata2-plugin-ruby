@@ -34,7 +34,11 @@ class Kumogata2::Plugin::Ruby
 
   def devaluate_template(template)
     exclude_key = proc do |k|
-      k = k.to_s.gsub('::', '__')
+      k = k.to_s
+      k.gsub!('____', '-')
+      k.gsub!('___', '.')
+      k.gsub!('__', '::')
+      k.gsub!('_', ':')
       k !~ /\A[_a-z]\w+\Z/i and k !~ %r|\A/\S*\Z|
     end
 
@@ -50,7 +54,10 @@ class Kumogata2::Plugin::Ruby
           end
         end
       else
+        k.gsub('-', '____')
+        k.gsub('.', '___')
         k.gsub('::', '__')
+        k.gsub(':', '_')
       end
     end
 
