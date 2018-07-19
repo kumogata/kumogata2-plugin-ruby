@@ -34,7 +34,7 @@ class Kumogata2::Plugin::Ruby
 
   def devaluate_template(template)
     exclude_key = proc do |k|
-      k = k.to_s
+      k = k.to_s.dup
       k.gsub!('____', '-')
       k.gsub!('___', '.')
       k.gsub!('__', '::')
