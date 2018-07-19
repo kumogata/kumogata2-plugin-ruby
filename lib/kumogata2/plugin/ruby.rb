@@ -16,8 +16,8 @@ class Kumogata2::Plugin::Ruby
   def parse(str)
     context = Kumogata2::Plugin::Ruby::Context.new(@options)
     context.instance_eval(str, @options.path_or_url)
-    @post = context.instance_variable_get(:@_post)
-    context.instance_variable_get(:@_template)
+    @post = context.instance_variable_get(:@_post) if context.instance_variable_defined? :@_post
+    context.instance_variable_get(:@_template) if context.instance_variable_defined? :@_template
   end
 
   def dump(hash)
