@@ -1,10 +1,12 @@
 # kumogata2-plugin-ruby
 
-It is the Ruby plug-in of [Kumogata2](https://github.com/winebarrel/kumogata2).
+It is the Ruby plug-in of [Kumogata2](https://github.com/kumogata/kumogata2).
 
 It convert the Ruby DSL to JSON.
 
-[![Gem Version](https://badge.fury.io/rb/kumogata2-plugin-ruby.png?201406152020)](http://badge.fury.io/rb/kumogata2-plugin-ruby)
+[![Gem Version](https://badge.fury.io/rb/kumogata2-plugin-ruby.svg)](http://badge.fury.io/rb/kumogata2-plugin-ruby)
+[![Build Status](https://travis-ci.org/kumogata/kumogata2-plugin-ruby.svg?branch=master)](https://travis-ci.org/kumogata/kumogata2-plugin-ruby)
+
 
 ## Installation
 
