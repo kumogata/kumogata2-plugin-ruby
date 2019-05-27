@@ -22,6 +22,20 @@ describe Kumogata2::Plugin::Ruby do
                                 }
                               })
     end
+    it 'Ruby format 3' do
+      opts = {
+        path_or_url: 'spec/fixtures/parse3.rb',
+      }
+      options = opts.kind_of?(Hashie::Mash) ? opts : Hashie::Mash.new(opts)
+      template = Kumogata2::Plugin::Ruby.new(options).parse(open(options.path_or_url, &:read))
+      expect(template).to eq ({
+                                'AWSTemplateFormatVersion' => '2010-09-09',
+                                'Version::Version1' => '2012-10-17',
+                                'Version:Version2' => '2012-10-17',
+                                'Version.Version3' => '2012-10-17',
+                                'Version-Version4' => '2012-10-17'
+                              })
+    end
   end
 
   describe '#dump' do
