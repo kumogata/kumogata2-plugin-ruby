@@ -8,10 +8,10 @@ class Kumogata2::Plugin::Ruby::Context
   def template(&block)
     key_converter = proc do |k|
       k.to_s.
-        gsub('__', '::').
-        gsub('___', ':').
+        gsub('_____', '-').
         gsub('____', '.').
-        gsub('_____', '-')
+        gsub('___', ':').
+        gsub('__', '::')
     end
 
     value_converter = proc do |v|
